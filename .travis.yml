@@ -1,0 +1,11 @@
+language: generic
+sudo: required
+services:
+  - docker
+
+before_install:
+  - docker build -t binhbtn -f Dockerfile.dev .
+
+script:
+#  - docker run binhbtn npm run test -- --converage
+  - docker run -e CI=true binhbtn npm run test
